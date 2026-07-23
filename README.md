@@ -22,20 +22,30 @@ The forecasting pipeline processes live telemetry through physical transformatio
 
 ```mermaid
 graph TD
-    A[Raw Solar Telemetry CSV] --> B[Live Feature Engineering]
-    B --> C(Log Transforms & Derivatives)
-    C --> D(Standard Scaler Normalization)
+    A[Raw Solar Telemetry CSV] --> B{Live Feature Engineering}
+    
+    B --> C1(Log Transforms SXR/HXR)
+    B --> C2(Rolling Derivatives & Ratios)
+    
+    C1 --> D(Standard Scaler Normalization)
+    C2 --> D
     
     D --> E{AI Inference Shell}
-    E -->|Conv1D| F[Extract Local Patterns]
-    F -->|Bidirectional LSTM| G[Sequential Context Encoding]
-    G -->|Multi-Head Attention| H[Focus on Critical Flux Changes]
+    E --> F[Conv1D: Extract Local Patterns]
+    F --> G[Bidirectional LSTM]
     
-    H --> I[Physical Reconstruction Logic]
-    I --> J((Mission Control Dashboard))
+    G -->|Sequential Context| H[Multi-Head Attention]
+    G -->|Global State| I[Context Vector]
+    
+    I --> H
+    H --> J(Feature Concatenation)
+    I --> J
+    
+    J --> K[Physical Reconstruction Logic]
+    K --> L((Mission Control Dashboard))
     
     style A fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff
-    style J fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff
+    style L fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff
     style E fill:#4c1d95,stroke:#8b5cf6,stroke-width:2px,color:#fff
 ```
 
@@ -91,18 +101,12 @@ python test/verify_day.py
 Below are the actual prediction outputs and the independent performance proof matrix derived from our model during the Bharatiya Antariksh Hackathon validation phase.
 
 ### 1. Mission Control Dashboard
-<p align="center">
-  <img src="assets/dashboard.jpg" alt="Mission Control Dashboard" width="800"/>
-  <br/>
-  <em>Integrated SXR/HXR Analysis showing the AI predicted flux trajectory and forecast probability distribution.</em>
-</p>
+![Mission Control Dashboard](assets/dashboard.jpg)
+*Integrated SXR/HXR Analysis showing the AI predicted flux trajectory and forecast probability distribution.*
 
 ### 2. Performance Proof Matrix
-<p align="center">
-  <img src="assets/performance.jpg" alt="Performance Proof Matrix" width="800"/>
-  <br/>
-  <em>Validation Engine Output showcasing near-perfect accuracy and high sensitivity across Quiet, C-Class, M-Class, and X-Class solar flares.</em>
-</p>
+![Performance Proof Matrix](assets/performance.jpg)
+*Validation Engine Output showcasing near-perfect accuracy and high sensitivity across Quiet, C-Class, M-Class, and X-Class solar flares.*
 
 ---
 
