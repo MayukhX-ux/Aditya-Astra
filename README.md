@@ -101,11 +101,11 @@ python test/verify_day.py
 Below are the actual prediction outputs and the independent performance proof matrix derived from our model during the Bharatiya Antariksh Hackathon validation phase.
 
 ### 1. Mission Control Dashboard
-![Mission Control Dashboard](assets/dashboard.jpg)
+![Mission Control Dashboard](assets/dashboard.jpeg)
 *Integrated SXR/HXR Analysis showing the AI predicted flux trajectory and forecast probability distribution.*
 
 ### 2. Performance Proof Matrix
-![Performance Proof Matrix](assets/performance.jpg)
+![Performance Proof Matrix](assets/performance.jpeg)
 *Validation Engine Output showcasing near-perfect accuracy and high sensitivity across Quiet, C-Class, M-Class, and X-Class solar flares.*
 
 ---
