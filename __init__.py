@@ -1,14 +1,10 @@
-from .axislines import Axes
-from .axislines import (  # noqa: F401
-    AxesZero, AxisArtistHelper, AxisArtistHelperRectlinear,
-    GridHelperBase, GridHelperRectlinear, Subplot, SubplotZero)
-from .axis_artist import AxisArtist, GridlinesCollection  # noqa: F401
-from .grid_helper_curvelinear import GridHelperCurveLinear  # noqa: F401
-from .floating_axes import FloatingAxes, FloatingSubplot  # noqa: F401
-from mpl_toolkits.axes_grid1.parasite_axes import (
-    host_axes_class_factory, parasite_axes_class_factory)
+from pathlib import Path
 
 
-ParasiteAxes = parasite_axes_class_factory(Axes)
-HostAxes = host_axes_class_factory(Axes)
-SubplotHost = HostAxes
+# Check that the test directories exist
+if not (Path(__file__).parent / "baseline_images").exists():
+    raise OSError(
+        'The baseline image directory does not exist. '
+        'This is most likely because the test data is not installed. '
+        'You may need to install matplotlib from source to get the '
+        'test data.')
