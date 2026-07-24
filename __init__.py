@@ -1,13 +1,96 @@
-# Copyright 2017 The Abseil Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+"""
+Wrapt is a library for decorators, wrappers and monkey patching.
+"""
+
+
+def _format_version(parts):
+    base = ".".join(parts[:3])
+    if len(parts) == 3:
+        return base
+    suffix = parts[3]
+    return (
+        f"{base}.{suffix}" if suffix.startswith(("dev", "post")) else f"{base}{suffix}"
+    )
+
+
+__version_info__ = ("2", "2", "1")
+__version__ = _format_version(__version_info__)
+
+from .__wrapt__ import (
+    BaseObjectProxy,
+    BoundFunctionWrapper,
+    CallableObjectProxy,
+    FunctionWrapper,
+    PartialCallableObjectProxy,
+    partial,
+)
+from .caching import lru_cache
+from .decorators import (
+    AdapterFactory,
+    adapter_factory,
+    bind_state_to_wrapper,
+    decorator,
+)
+from .importer import (
+    discover_post_import_hooks,
+    notify_module_loaded,
+    register_post_import_hook,
+    when_imported,
+)
+from .patches import (
+    apply_patch,
+    function_wrapper,
+    patch_function_wrapper,
+    resolve_path,
+    transient_function_wrapper,
+    wrap_function_wrapper,
+    wrap_object,
+    wrap_object_attribute,
+)
+from .proxies import AutoObjectProxy, LazyObjectProxy, ObjectProxy, lazy_import
+from .signature import with_signature
+from .synchronization import (
+    async_to_sync,
+    mark_as_async,
+    mark_as_sync,
+    sync_to_async,
+    synchronized,
+)
+from .weakrefs import WeakFunctionProxy
+
+__all__ = (
+    "AutoObjectProxy",
+    "BaseObjectProxy",
+    "BoundFunctionWrapper",
+    "CallableObjectProxy",
+    "FunctionWrapper",
+    "LazyObjectProxy",
+    "ObjectProxy",
+    "PartialCallableObjectProxy",
+    "partial",
+    "AdapterFactory",
+    "adapter_factory",
+    "bind_state_to_wrapper",
+    "async_to_sync",
+    "decorator",
+    "lru_cache",
+    "mark_as_async",
+    "mark_as_sync",
+    "sync_to_async",
+    "synchronized",
+    "with_signature",
+    "discover_post_import_hooks",
+    "notify_module_loaded",
+    "register_post_import_hook",
+    "when_imported",
+    "apply_patch",
+    "function_wrapper",
+    "lazy_import",
+    "patch_function_wrapper",
+    "resolve_path",
+    "transient_function_wrapper",
+    "wrap_function_wrapper",
+    "wrap_object",
+    "wrap_object_attribute",
+    "WeakFunctionProxy",
+)
