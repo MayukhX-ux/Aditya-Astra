@@ -1,150 +1,94 @@
 Metadata-Version: 2.4
-Name: termcolor
-Version: 3.3.0
-Summary: ANSI color formatting for output in terminal
-Project-URL: Changelog, https://github.com/termcolor/termcolor/releases
-Project-URL: Homepage, https://github.com/termcolor/termcolor
-Project-URL: Source, https://github.com/termcolor/termcolor
-Author-email: Konstantin Lepa <konstantin.lepa@gmail.com>
-Maintainer: Hugo van Kemenade
-License-Expression: MIT
-License-File: COPYING.txt
-Keywords: ANSI,ANSI color,ANSI colour,color,colour,formatting,termcolor,terminal
+Name: tensorflow
+Version: 2.21.0
+Summary: TensorFlow is an open source machine learning framework for everyone.
+Home-page: https://www.tensorflow.org/
+Download-URL: https://github.com/tensorflow/tensorflow/tags
+Author: Google Inc.
+Author-email: packages@tensorflow.org
+License: Apache 2.0
+Keywords: tensorflow tensor machine learning
 Classifier: Development Status :: 5 - Production/Stable
-Classifier: Environment :: Console
+Classifier: Environment :: GPU :: NVIDIA CUDA :: 12
+Classifier: Environment :: GPU :: NVIDIA CUDA :: 12 :: 12.2
 Classifier: Intended Audience :: Developers
-Classifier: Operating System :: OS Independent
-Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3 :: Only
 Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
 Classifier: Programming Language :: Python :: 3.12
 Classifier: Programming Language :: Python :: 3.13
-Classifier: Programming Language :: Python :: 3.14
-Classifier: Programming Language :: Python :: 3.15
-Classifier: Programming Language :: Python :: Implementation :: CPython
-Classifier: Programming Language :: Python :: Implementation :: PyPy
-Classifier: Topic :: Terminals
-Classifier: Typing :: Typed
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
 Requires-Python: >=3.10
-Provides-Extra: tests
-Requires-Dist: pytest; extra == 'tests'
-Requires-Dist: pytest-cov; extra == 'tests'
 Description-Content-Type: text/markdown
+Requires-Dist: absl-py>=1.0.0
+Requires-Dist: astunparse>=1.6.0
+Requires-Dist: flatbuffers>=25.9.23
+Requires-Dist: gast!=0.5.0,!=0.5.1,!=0.5.2,>=0.2.1
+Requires-Dist: google_pasta>=0.1.1
+Requires-Dist: libclang>=13.0.0
+Requires-Dist: opt_einsum>=2.3.2
+Requires-Dist: packaging
+Requires-Dist: protobuf<8.0.0,>=6.31.1
+Requires-Dist: requests<3,>=2.21.0
+Requires-Dist: setuptools
+Requires-Dist: six>=1.12.0
+Requires-Dist: termcolor>=1.1.0
+Requires-Dist: typing_extensions>=3.6.6
+Requires-Dist: wrapt>=1.11.0
+Requires-Dist: grpcio<2.0,>=1.24.3
+Requires-Dist: keras>=3.12.0
+Requires-Dist: numpy>=1.26.0
+Requires-Dist: h5py<3.15.0,>=3.11.0
+Requires-Dist: ml_dtypes<1.0.0,>=0.5.1
+Provides-Extra: and-cuda
+Requires-Dist: nvidia-cublas-cu12<13.0,>=12.5.3.2; extra == "and-cuda"
+Requires-Dist: nvidia-cuda-cupti-cu12<13.0,>=12.5.82; extra == "and-cuda"
+Requires-Dist: nvidia-cuda-nvcc-cu12<13.0,>=12.5.82; extra == "and-cuda"
+Requires-Dist: nvidia-cuda-nvrtc-cu12<13.0,>=12.5.82; extra == "and-cuda"
+Requires-Dist: nvidia-cuda-runtime-cu12<13.0,>=12.5.82; extra == "and-cuda"
+Requires-Dist: nvidia-cudnn-cu12<10.0,>=9.3.0.75; extra == "and-cuda"
+Requires-Dist: nvidia-cufft-cu12<12.0,>=11.2.3.61; extra == "and-cuda"
+Requires-Dist: nvidia-curand-cu12<11.0,>=10.3.6.82; extra == "and-cuda"
+Requires-Dist: nvidia-cusolver-cu12<12.0,>=11.6.3.83; extra == "and-cuda"
+Requires-Dist: nvidia-cusparse-cu12<13.0,>=12.5.1.3; extra == "and-cuda"
+Requires-Dist: nvidia-nccl-cu12<3.0,>=2.27.7; extra == "and-cuda"
+Requires-Dist: nvidia-nvjitlink-cu12<13.0,>=12.5.82; extra == "and-cuda"
+Provides-Extra: gcs-filesystem
+Requires-Dist: tensorflow-io-gcs-filesystem>=0.23.1; (sys_platform != "win32" and python_version < "3.13") and extra == "gcs-filesystem"
+Requires-Dist: tensorflow-io-gcs-filesystem>=0.23.1; (sys_platform == "win32" and python_version < "3.12") and extra == "gcs-filesystem"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: download-url
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
 
-# termcolor
+[![Python](https://img.shields.io/pypi/pyversions/tensorflow.svg?style=plastic)](https://badge.fury.io/py/tensorflow)
+[![PyPI](https://badge.fury.io/py/tensorflow.svg)](https://badge.fury.io/py/tensorflow)
 
-[![PyPI version](https://img.shields.io/pypi/v/termcolor.svg?logo=pypi&logoColor=FFE873)](https://pypi.org/project/termcolor)
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/termcolor.svg?logo=python&logoColor=FFE873)](https://pypi.org/project/termcolor)
-[![PyPI downloads](https://img.shields.io/pypi/dm/termcolor.svg)](https://pypistats.org/packages/termcolor)
-[![GitHub Actions status](https://github.com/termcolor/termcolor/workflows/Test/badge.svg)](https://github.com/termcolor/termcolor/actions)
-[![Codecov](https://codecov.io/gh/termcolor/termcolor/branch/main/graph/badge.svg)](https://codecov.io/gh/termcolor/termcolor)
-[![Licence](https://img.shields.io/github/license/termcolor/termcolor.svg)](COPYING.txt)
-[![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
-[![Tidelift](https://tidelift.com/badges/package/pypi/termcolor)](https://tidelift.com/subscription/pkg/pypi-termcolor?utm_source=pypi-termcolor&utm_medium=referral&utm_campaign=readme)
+TensorFlow is an open source software library for high performance numerical
+computation. Its flexible architecture allows easy deployment of computation
+across a variety of platforms (CPUs, GPUs, TPUs), and from desktops to clusters
+of servers to mobile and edge devices.
 
-## Installation
-
-### From PyPI
-
-```bash
-python3 -m pip install --upgrade termcolor
-```
-
-### From source
-
-```bash
-git clone https://github.com/termcolor/termcolor
-cd termcolor
-python3 -m pip install .
-```
-
-### Demo
-
-To see demo output, run:
-
-```bash
-python3 -m termcolor
-```
-
-## Example
-
-```python
-import sys
-
-from termcolor import colored, cprint
-
-text = colored("Hello, World!", "red", attrs=["reverse", "blink"])
-print(text)
-cprint("Hello, World!", "green", "on_red")
-
-print_red_on_cyan = lambda x: cprint(x, "red", "on_cyan")
-print_red_on_cyan("Hello, World!")
-print_red_on_cyan("Hello, Universe!")
-
-for i in range(10):
-    cprint(i, "magenta", end=" ")
-
-cprint("Attention!", "red", attrs=["bold"], file=sys.stderr)
-
-# You can also specify 0-255 RGB ints via a tuple
-cprint("Both foreground and background can use tuples", (100, 150, 250), (50, 60, 70))
-```
-
-## Text properties
-
-| Text colors     | Text highlights    | Attributes  |
-| --------------- | ------------------ | ----------- |
-| `black`         | `on_black`         | `bold`      |
-| `red`           | `on_red`           | `dark`      |
-| `green`         | `on_green`         | `italic`    |
-| `yellow`        | `on_yellow`        | `underline` |
-| `blue`          | `on_blue`          | `blink`     |
-| `magenta`       | `on_magenta`       | `reverse`   |
-| `cyan`          | `on_cyan`          | `concealed` |
-| `white`         | `on_white`         | `strike`    |
-| `light_grey`    | `on_light_grey`    |             |
-| `dark_grey`     | `on_dark_grey`     |             |
-| `light_red`     | `on_light_red`     |             |
-| `light_green`   | `on_light_green`   |             |
-| `light_yellow`  | `on_light_yellow`  |             |
-| `light_blue`    | `on_light_blue`    |             |
-| `light_magenta` | `on_light_magenta` |             |
-| `light_cyan`    | `on_light_cyan`    |             |
-
-You can also use any arbitrary RGB color specified as a tuple of 0-255 integers, for
-example, `(100, 150, 250)`.
-
-## Terminal properties
-
-| Terminal     | bold    | dark | italic | underline | blink      | reverse | concealed |
-| ------------ | ------- | ---- | ------ | --------- | ---------- | ------- | --------- |
-| xterm        | yes     | no   | yes    | yes       | bold       | yes     | yes       |
-| linux        | yes     | yes  | color  | bold      | yes        | yes     | no        |
-| rxvt         | yes     | no   | yes    | yes       | bold/black | yes     | no        |
-| dtterm       | yes     | yes  | ?      | yes       | reverse    | yes     | yes       |
-| teraterm     | reverse | no   | ?      | yes       | rev/red    | yes     | no        |
-| aixterm      | normal  | no   | ?      | yes       | no         | yes     | yes       |
-| PuTTY        | color   | no   | no     | yes       | no         | yes     | no        |
-| Windows      | no      | no   | no     | no        | no         | yes     | no        |
-| Cygwin SSH   | yes     | no   | ?      | color     | color      | color   | yes       |
-| Mac Terminal | yes     | no   | yes    | yes       | yes        | yes     | yes       |
-
-## Overrides
-
-Terminal colour detection can be disabled or enabled in several ways.
-
-In order of precedence:
-
-1. Calling `colored` or `cprint` with a truthy `no_color` disables colour.
-2. Calling `colored` or `cprint` with a truthy `force_color` forces colour.
-3. Setting the `ANSI_COLORS_DISABLED` environment variable to any non-empty value
-   disables colour.
-4. Setting the [`NO_COLOR`](https://no-color.org/) environment variable to any non-empty
-   value disables colour.
-5. Setting the [`FORCE_COLOR`](https://force-color.org/) environment variable to any
-   non-empty value forces colour.
-6. Setting the `TERM` environment variable to `dumb`, or using such a
-   [dumb terminal](https://en.wikipedia.org/wiki/Computer_terminal#Character-oriented_terminal),
-   disables colour.
-7. Finally, termcolor will attempt to detect whether the terminal supports colour.
+Originally developed by researchers and engineers from the Google Brain team
+within Google's AI organization, it comes with strong support for machine
+learning and deep learning and the flexible numerical computation core is used
+across many other scientific domains. TensorFlow is licensed under [Apache
+2.0](https://github.com/tensorflow/tensorflow/blob/master/LICENSE).
